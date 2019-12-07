@@ -71,8 +71,8 @@ public class UserBadgeController {
       BadgeTypeStrategy badgeTypeStrategy = badgeTypeFactory
           .getBadgeTypeStrategy(badgeType.getName());
       Float limit = badgeTypeStrategy.getProgressForUser(user);
-      badgeList.add(
-          badgeRepository.find1ByBadgetypeAndCutoffGreaterThanOrderByCutOffAsc(badgeType, limit));
+      badgeList.add(badgeRepository
+          .findByBadgeTypeAndMilestoneGreaterThanOrderByMilestoneAsc(badgeType, limit));
     }
 
     return badgeList;
