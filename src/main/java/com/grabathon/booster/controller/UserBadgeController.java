@@ -1,12 +1,15 @@
 package com.grabathon.booster.controller;
 
+import com.grabathon.booster.factory.BadgeTypeFactory;
 import com.grabathon.booster.model.Badge;
 import com.grabathon.booster.model.BadgeType;
 import com.grabathon.booster.model.User;
 import com.grabathon.booster.model.UserBadge;
+import com.grabathon.booster.repository.BadgeRepository;
 import com.grabathon.booster.repository.BadgeTypeRepository;
 import com.grabathon.booster.repository.UserBadgeRepository;
 import com.grabathon.booster.repository.UserRepository;
+import com.grabathon.booster.service.BadgeTypeStrategy;
 import javafx.print.PageRange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +33,12 @@ public class UserBadgeController {
 
     @Autowired
     private BadgeTypeRepository badgeTypeRepository;
+
+    @Autowired
+    private BadgeTypeFactory badgeTypeFactory;
+
+    @Autowired
+    private BadgeRepository badgeRepository;
 
     @RequestMapping(value = "completed", method = RequestMethod.GET)
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -56,10 +65,20 @@ public class UserBadgeController {
         Pageable pageable = new PageRequest(0, 10);
         Page<BadgeType> badgeTypePage = badgeTypeRepository.findAll(pageable);
         List<BadgeType> badgeTypes = badgeTypePage.getContent();
+        List<Badge> badgeList = new ArrayList<>();
 
         for (BadgeType badgeType:
              badgeTypes) {
-
+            BadgeTypeStrategy badgeTypeStrategy = badgeTypeFactory.getBadgeTypeStrategy(badgeType.getName());
+            Float limit = badgeTypeStrategy.getProgressForUser(user);
+            badgeList.add(
+                    badgeRepository.find1ByBadgetypeAndCutoffGreaterThanOrderByCutOffAsc(
+                            badgeType,
+                            limit
+                    )
+            );
         }
+
+        return badgeList;
     }
 }
