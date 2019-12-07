@@ -57,6 +57,8 @@ public class UserBadgeController {
     return badgeList;
   }
 
+  @RequestMapping(value = "upcoming", method = RequestMethod.GET)
+  @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE})
   public List<Badge> getUpcomingBadges(@RequestParam("user_id") Integer user_id,
       @RequestParam("page_number") Integer page_number) {
     User user = userRepository.findOne(user_id);
