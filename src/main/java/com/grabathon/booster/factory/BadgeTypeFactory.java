@@ -3,14 +3,14 @@ package com.grabathon.booster.factory;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.grabathon.booster.constants.BadgeTypes;
 import com.grabathon.booster.service.BadgeTypeStrategy;
 import com.grabathon.booster.service.FoodDeliveryCountStrategy;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class BadgeTypeFactory {
@@ -30,7 +30,8 @@ public class BadgeTypeFactory {
   public BadgeTypeStrategy getBadgeTypeStrategy(String badgeName) {
     BadgeTypeStrategy badgeTypeStrategy = badgeTypeStrategyMap.get(badgeName);
     if (badgeTypeStrategy == null) {
-      throw new RuntimeException("No strategy found for badge " + badgeName + "  keys" + badgeTypeStrategyMap.keySet());
+      throw new RuntimeException(
+          "No strategy found for badge " + badgeName + "  keys" + badgeTypeStrategyMap.keySet());
     }
 
     return badgeTypeStrategy;
