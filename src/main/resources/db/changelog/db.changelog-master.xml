@@ -183,6 +183,45 @@
 		                         initiallyDeferred="false" referencedColumnNames="id"
 		                         referencedTableName="badge"/>
 	</changeSet>
+	<changeSet author="aditya" id="1575742389272-22">
+		<createTable tableName="transaction">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="transactionPK"/>
+			</column>
+			<column name="created_at" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="deleted_at" type="datetime"/>
+			<column name="modified_at" type="datetime"/>
+			<column name="user_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="merchant_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="amount" type="FLOAT"/>
+		</createTable>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-23">
+		<addUniqueConstraint columnNames="id"
+		                     constraintName="UC_TRANSACTIONID_COL"
+		                     tableName="transaction"/>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-24">
+		<addForeignKeyConstraint baseColumnNames="user_id"
+		                         baseTableName="transaction"
+		                         constraintName="FK5jxsc31e20v04qpv3ir" deferrable="false"
+		                         initiallyDeferred="false" referencedColumnNames="id"
+		                         referencedTableName="user"/>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-25">
+		<addForeignKeyConstraint baseColumnNames="merchant_id"
+		                         baseTableName="transaction"
+		                         constraintName="FKk7sdasdu4hfbasdo6afav60ma"
+		                         deferrable="false"
+		                         initiallyDeferred="false" referencedColumnNames="id"
+		                         referencedTableName="badge"/>
+	</changeSet>
 	<changeSet author="aditya" id="1575742389272-15">
 		<tagDatabase tag="VERSION_1.0"/>
 	</changeSet>
