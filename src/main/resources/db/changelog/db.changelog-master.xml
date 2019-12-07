@@ -66,7 +66,7 @@
 			</column>
 			<column name="deleted_at" type="datetime"/>
 			<column name="modified_at" type="datetime"/>
-			<column name="location" type="TINYBLOB"/>
+			<column name="location" type="POINT"/>
 			<column name="name" type="VARCHAR(50)">
 				<constraints nullable="false"/>
 			</column>
@@ -268,6 +268,20 @@
 			<column name="milestone" value="100"/>
 			<column name="image_url"
 			        value="https://grabathon2019.s3-ap-southeast-1.amazonaws.com/connoisseur.png"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-28">
+		<insert tableName="user">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="name" value="Rahul Gupta"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-29">
+		<insert tableName="merchant">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="name" value="Rahul Gupta"/>
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-15">
