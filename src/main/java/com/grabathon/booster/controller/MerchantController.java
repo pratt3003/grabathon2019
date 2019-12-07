@@ -22,4 +22,5 @@ public class MerchantController {
     public List<Merchant> getMerchants() {
         return merchantRepository.findAll();
     }
+
 }

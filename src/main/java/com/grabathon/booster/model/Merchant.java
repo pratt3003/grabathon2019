@@ -1,14 +1,13 @@
 package com.grabathon.booster.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import java.awt.Point;
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +22,6 @@ public class Merchant extends AbstractBaseEntity implements Serializable {
   private String name;
 
   @JsonIgnore
-  @Column(name = "location")
+  @Column(name = "location", columnDefinition = "Point")
   private Point location;
 }
