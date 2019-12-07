@@ -11,7 +11,5 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
-//  @Query("select count(t) from Transaction t where t.user = ?1")
-//  Integer countByUser(User user);
-  List<Transaction> findByUser(User user);
+  Integer countByUser(User user);
 }

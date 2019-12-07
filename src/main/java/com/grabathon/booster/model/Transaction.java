@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "merchant_coupon_badge_mapping")
+@Table(name = "transaction")
 public class Transaction extends AbstractBaseEntity implements Serializable {
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)

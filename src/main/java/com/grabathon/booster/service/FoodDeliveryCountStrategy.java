@@ -17,7 +17,6 @@ public class FoodDeliveryCountStrategy implements BadgeTypeStrategy {
 
   @Override
   public float getProgressForUser(User user) {
-    List<Transaction> transactionList = transactionRepository.findAll();
-    return transactionList.size();
+    return transactionRepository.countByUser(user);
   }
 }

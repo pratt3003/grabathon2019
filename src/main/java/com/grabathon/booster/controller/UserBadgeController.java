@@ -3,6 +3,7 @@ package com.grabathon.booster.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.grabathon.booster.dto.UpcomingBadgeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -59,7 +60,7 @@ public class UserBadgeController {
 
   @RequestMapping(value = "upcoming", method = RequestMethod.GET)
   @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE})
-  public List<Badge> getUpcomingBadges(@RequestParam("user_id") Integer user_id,
+  public List<UpcomingBadgeDto> getUpcomingBadges(@RequestParam("user_id") Integer user_id,
       @RequestParam("page_number") Integer page_number) {
     User user = userRepository.findOne(user_id);
     List<UserBadge> userBadges = userBadgeRepository.findByUser(user);
@@ -67,16 +68,19 @@ public class UserBadgeController {
     Pageable pageable = new PageRequest(0, 10);
     Page<BadgeType> badgeTypePage = badgeTypeRepository.findAll(pageable);
     List<BadgeType> badgeTypes = badgeTypePage.getContent();
-    List<Badge> badgeList = new ArrayList<>();
+    List<UpcomingBadgeDto> upcomingBadgeDtoList = new ArrayList<>();
 
     for (BadgeType badgeType : badgeTypes) {
       BadgeTypeStrategy badgeTypeStrategy = badgeTypeFactory
           .getBadgeTypeStrategy(badgeType.getName());
-      Float limit = badgeTypeStrategy.getProgressForUser(user);
-      badgeList.add(badgeRepository
-          .findByBadgeTypeAndMilestoneGreaterThanOrderByMilestoneAsc(badgeType, limit));
+      Float progress = badgeTypeStrategy.getProgressForUser(user);
+      Badge badge = badgeRepository
+              .findFirstByBadgeTypeAndMilestoneGreaterThanOrderByMilestoneAsc(badgeType, progress);
+      UpcomingBadgeDto upcomingBadgeDto = new UpcomingBadgeDto(badge);
+      upcomingBadgeDto.setProgress(progress);
+      upcomingBadgeDtoList.add(upcomingBadgeDto);
     }
 
-    return badgeList;
+    return upcomingBadgeDtoList;
   }
 }
