@@ -8,5 +8,5 @@ import com.grabathon.booster.model.BadgeType;
 
 @Repository
 public interface BadgeRepository extends JpaRepository<Badge, Integer> {
-  Badge findByBadgeTypeAndMilestoneGreaterThanOrderByMilestoneAsc(BadgeType badgeType, Float limit);
+  Badge findFirstByBadgeTypeAndMilestoneGreaterThanOrderByMilestoneAsc(BadgeType badgeType, Float limit);
 }
