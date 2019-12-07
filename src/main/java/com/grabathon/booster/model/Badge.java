@@ -24,8 +24,11 @@ public class Badge extends AbstractBaseEntity implements Serializable {
   @Column(name = "name", nullable = false, length = 50)
   private String name;
 
-  @Column(name = "cutoff", nullable = false)
-  private float cutoff;
+  @Column(name = "milestone", nullable = false)
+  private float milestone;
+
+  @Column(name = "image_url", nullable = false)
+  private String imageUrl;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
   @JoinColumn(name = "badge_type_id", nullable = false)

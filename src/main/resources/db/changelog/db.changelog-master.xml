@@ -13,7 +13,10 @@
 			</column>
 			<column name="deleted_at" type="datetime"/>
 			<column name="modified_at" type="datetime"/>
-			<column name="cutoff" type="FLOAT">
+			<column name="image_url" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="milestone" type="FLOAT">
 				<constraints nullable="false"/>
 			</column>
 			<column name="name" type="VARCHAR(50)">
@@ -221,6 +224,51 @@
 		                         deferrable="false"
 		                         initiallyDeferred="false" referencedColumnNames="id"
 		                         referencedTableName="badge"/>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-26">
+		<insert tableName="badge_type">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="name" value="food_delivery_count_badge"/>
+		</insert>
+		<insert tableName="badge">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="badge_type_id" value="1"/>
+			<column name="name" value="Foodie"/>
+			<column name="milestone" value="1"/>
+			<column name="image_url"
+			        value="https://grabathon2019.s3-ap-southeast-1.amazonaws.com/foodie.png"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-27">
+		<insert tableName="badge">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="badge_type_id" value="1"/>
+			<column name="name" value="Big Foodie"/>
+			<column name="milestone" value="5"/>
+			<column name="image_url"
+			        value="https://grabathon2019.s3-ap-southeast-1.amazonaws.com/bigFoodie.png"/>
+		</insert>
+		<insert tableName="badge">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="badge_type_id" value="1"/>
+			<column name="name" value="Super Foodie"/>
+			<column name="milestone" value="50"/>
+			<column name="image_url"
+			        value="https://grabathon2019.s3-ap-southeast-1.amazonaws.com/superFoodie.png"/>
+		</insert>
+		<insert tableName="badge">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="badge_type_id" value="1"/>
+			<column name="name" value="Connoisseur"/>
+			<column name="milestone" value="100"/>
+			<column name="image_url"
+			        value="https://grabathon2019.s3-ap-southeast-1.amazonaws.com/connoisseur.png"/>
+		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-15">
 		<tagDatabase tag="VERSION_1.0"/>
