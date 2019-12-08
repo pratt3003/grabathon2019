@@ -15,7 +15,7 @@ import com.grabathon.booster.service.FoodDeliveryCountStrategy;
 @Component
 public class BadgeTypeFactory {
 
-  private Map<String, BadgeTypeStrategy> badgeTypeStrategyMap;
+  public Map<String, BadgeTypeStrategy> badgeTypeStrategyMap;
 
   @Autowired
   private FoodDeliveryCountStrategy foodDeliveryCountStrategy;
