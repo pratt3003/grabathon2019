@@ -66,7 +66,8 @@
 			</column>
 			<column name="deleted_at" type="datetime"/>
 			<column name="modified_at" type="datetime"/>
-			<column name="location" type="POINT"/>
+			<column name="latitude" type="FLOAT"/>
+			<column name="longitude" type="FLOAT"/>
 			<column name="name" type="VARCHAR(50)">
 				<constraints nullable="false"/>
 			</column>
@@ -281,7 +282,37 @@
 		<insert tableName="merchant">
 			<column name="created_at" value="now()"/>
 			<column name="modified_at" value="now()"/>
-			<column name="name" value="Rahul Gupta"/>
+			<column name="name" value="Dessert Restaurant"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-30">
+		<insert tableName="merchant">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="name" value="Vegan Restaurant"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-31">
+		<insert tableName="merchant">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="name" value="Delicacy"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-32">
+		<insert tableName="coupon">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="code" value="TWENTY"/>
+			<column name="discount" value="20"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-33">
+		<insert tableName="coupon">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="code" value="THIRTY"/>
+			<column name="discount" value="30"/>
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-15">
