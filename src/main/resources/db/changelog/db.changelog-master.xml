@@ -283,6 +283,8 @@
 			<column name="created_at" value="now()"/>
 			<column name="modified_at" value="now()"/>
 			<column name="name" value="Dessert Restaurant"/>
+			<column name="latitude" value="12.978489" />
+			<column name="longitude" value="77.637330" />
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-30">
@@ -290,6 +292,8 @@
 			<column name="created_at" value="now()"/>
 			<column name="modified_at" value="now()"/>
 			<column name="name" value="Vegan Restaurant"/>
+			<column name="latitude" value="12.979974" />
+			<column name="longitude" value="77.640549" />
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-31">
@@ -297,6 +301,8 @@
 			<column name="created_at" value="now()"/>
 			<column name="modified_at" value="now()"/>
 			<column name="name" value="Delicacy"/>
+			<column name="latitude" value="12.9858862" />
+			<column name="longitude" value="77.6431171" />
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-32">
@@ -313,6 +319,41 @@
 			<column name="modified_at" value="now()"/>
 			<column name="code" value="THIRTY"/>
 			<column name="discount" value="30"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-34">
+		<insert tableName="user_badge">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="user_id" value="1"/>
+			<column name="badge_id" value="1"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-35">
+		<insert tableName="transaction">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="merchant_id" value="1"/>
+			<column name="user_id" value="1"/>
+			<column name="amount" value="100"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-36">
+		<insert tableName="merchant_coupon_badge_mapping">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="merchant_id" value="1"/>
+			<column name="coupon_id" value="1"/>
+			<column name="badge_id" value="1"/>
+		</insert>
+	</changeSet>
+	<changeSet author="aditya" id="1575742389272-37">
+		<insert tableName="merchant_coupon_badge_mapping">
+			<column name="created_at" value="now()"/>
+			<column name="modified_at" value="now()"/>
+			<column name="merchant_id" value="1"/>
+			<column name="coupon_id" value="2"/>
+			<column name="badge_id" value="2"/>
 		</insert>
 	</changeSet>
 	<changeSet author="aditya" id="1575742389272-15">
